@@ -1,0 +1,179 @@
+
+body {
+    margin: 0;
+}
+
+.signup-form {
+    width: 100%;
+    min-width: 600px;
+    min-height: 100vh;
+    background-color: #161616;
+    border-radius: 8px;
+    color: #fff;
+}
+
+.starcolor {
+    color: #f42b72;
+}
+
+.inform {
+    height: 300px;
+    min-width: 600px;
+    margin-bottom: 70px;
+    background-color: #121212;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 3px 15px rgb(45, 45, 45);
+}
+
+.informbox {
+    width: 600px;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+
+.imgbox {
+    text-align: center;
+}
+
+img {
+    width: 90px;
+    height: 90px;
+}
+
+.informbox h1 {
+    text-align: center;
+    font-weight: 300;
+}
+
+.informbox h6 {
+    text-align: end;
+    font-weight: 400;
+    color: rgb(207, 207, 207);
+}
+
+.form-group {
+    width: 600px;
+    margin: 35px auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ccc;
+    width: 120px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-container {
+    flex: 1; /* input을 넓게 만들기 위해 flex 사용 */
+}
+
+input {
+    width:300px;
+    height:35px;
+    margin-left: 40px;
+    border: none;
+    border-radius: 2px; /* 애니메이션 자연스럽게 나타내기 위해서 추가 */
+    border-bottom: 2px solid #ffffff; /* 하단에만 테두리 추가 */
+    font-size: 1rem;
+    background-color: #161616;
+    color: #fff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+input:focus {
+    border-radius: 5px;
+    background-color: rgba(169, 169, 169, 0.2); /* 회색 불투명 배경 */
+    outline:none;
+}
+
+.check-icon {
+    color: #4caf50;
+}
+
+.error-icon {
+    color: #f44336;
+}
+
+button {
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color:rgba(0,0,0,0);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+small {
+    display: block;
+    margin-top: 0.5rem;
+    margin-left: 165px;
+    font-size: 0.9rem;
+}
+
+small.error-text {
+    color: #fda4c7;
+}
+
+small.valid-text {
+    color: #4ece95;
+}
+
+small.default-text {
+    color: #a9a9a9;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: gray;
+    color: white;
+}
+
+.error-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: red;
+    font-size: 14px;
+}
+
+/* 중복확인 버튼 비활성화 */
+.signup-form button[type='button'] {
+    background-color: rgb(91, 91, 91);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.signup-form button[type='button']:disabled {
+    background-color: rgb(39, 38, 38);
+    cursor: not-allowed;
+}
+
+.signup-form .input-group button {
+    margin-left: 1rem;
+}
+
+.contour{
+    width:800px;
+    border:2px solid white;
+}
