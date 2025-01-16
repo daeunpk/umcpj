@@ -1,3 +1,5 @@
+// test id='test123' --> 로컬 스토리지에서 확인 가능
+
 import React, { useState } from 'react';
 import './signupForm.css';
 
