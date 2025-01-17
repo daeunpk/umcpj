@@ -1,5 +1,3 @@
-// test id='test123' --> 로컬 스토리지에서 확인 가능
-
 import React, { useState } from 'react';
 import './signupForm.css';
 
@@ -83,11 +81,11 @@ const SignupForm: React.FC = () => {
                 setMessages(prev => ({
                     ...prev,
                     passwordLength: isLengthValid
-                        ? '* 비밀번호는 10자 이상이어야 합니다.'
-                        : '* 비밀번호는 10자 이상이어야 합니다.',
+                        ? '* 10자 이상 입력'
+                        : '* 10자 이상 입력',
                     passwordComplexity: isComplexValid
-                        ? '* 비밀번호는 영문·숫자·특수문자 중 2개 이상 조합이어야 합니다.'
-                        : '* 비밀번호는 영문·숫자·특수문자 중 2개 이상 조합이어야 합니다.',
+                        ? '* 영문·숫자·특수문자 중 2개 이상 조합(공백 불가)'
+                        : '* 영문·숫자·특수문자 중 2개 이상 조합(공백 불가)',
                 }));
 
                 setValidation(prev => ({
@@ -147,7 +145,7 @@ const SignupForm: React.FC = () => {
         e.preventDefault();
         if (Object.values(validation).every((v) => v) && !isIdDuplicate) {
             const storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-            const newUser = { id: form.id, nickname: form.nickname }; // 비밀번호 제외
+            const newUser = { id: form.id, nickname: form.nickname };
             localStorage.setItem('registeredUsers', JSON.stringify([...storedUsers, newUser]));
     
             alert('회원가입 성공!');
@@ -156,7 +154,6 @@ const SignupForm: React.FC = () => {
         }
     };
 
-    // 아이디 유효성 검사 조건에 맞으면 중복 확인 버튼 활성화
     const isIdValid = validation.idLength;
 
     return (
@@ -184,7 +181,7 @@ const SignupForm: React.FC = () => {
                             className={validation.idLength && !isIdDuplicate ? 'valid' : ''}
                             placeholder="아이디를 입력해주세요."
                         />
-                        {isIdChecked && !isIdDuplicate && <span className="check-icon">✔</span>}
+                        {isIdChecked && !isIdDuplicate && <img className="check-icon" src="src\icons\x-circle.png"></img>}
                         {isIdChecked && isIdDuplicate && <span className="error-icon">✘</span>}
                     </div>
                     <button 
@@ -236,17 +233,6 @@ const SignupForm: React.FC = () => {
                     className={
                         form.password === ''
                         ? 'default-text'
-                        : validation.passwordLength
-                        ? 'valid-text'
-                        : 'error-text'
-                    }
-                >
-                    {messages.passwordLength}
-                </small>
-                <small
-                    className={
-                        form.password === ''
-                        ? 'default-text'
                         : validation.passwordComplexity
                         ? 'valid-text'
                         : 'error-text'
@@ -254,6 +240,19 @@ const SignupForm: React.FC = () => {
                 >
                     {messages.passwordComplexity}
                 </small>
+                
+                <small
+                    className={
+                        form.password === ''
+                        ? 'default-text'
+                        : validation.passwordLength
+                        ? 'valid-text'
+                        : 'error-text'
+                    }
+                >
+                    {messages.passwordLength}
+                </small>
+
             </div>
 
             <div className="form-group">
