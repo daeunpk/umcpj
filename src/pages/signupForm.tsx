@@ -161,7 +161,7 @@ const SignupForm: React.FC = () => {
             <div className="inform">
                 <div className="informbox">
                     <div className="imgbox">
-                        <img src="src\pages\logo.png" alt="logo" />
+                        <img src="src\icons\logo.png" alt="logo" />
                     </div>
                     <h1>회원가입</h1>
                     <h6><span className="starcolor">*</span> 필수 입력 사항</h6>
@@ -240,7 +240,7 @@ const SignupForm: React.FC = () => {
                 >
                     {messages.passwordComplexity}
                 </small>
-                
+
                 <small
                     className={
                         form.password === ''
