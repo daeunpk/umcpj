@@ -181,8 +181,17 @@ const SignupForm: React.FC = () => {
                             className={validation.idLength && !isIdDuplicate ? 'valid' : ''}
                             placeholder="아이디를 입력해주세요."
                         />
-                        {isIdChecked && !isIdDuplicate && <img className="check-icon" src="src\icons\x-circle.png"></img>}
-                        {isIdChecked && isIdDuplicate && <span className="error-icon">✘</span>}
+                        {isIdChecked && !isIdDuplicate && (
+                            <img className="check-icon" src="src\icons\v-circle.png" />
+                        )}
+                        <img
+                            className="clear-icon"
+                            src="src\icons\x-circle.png"
+                            onClick={() => {
+                                setForm({ ...form, id: '' })}
+                            }
+                        >
+                        </img>
                     </div>
                     <button 
                         type="button" 
@@ -219,15 +228,23 @@ const SignupForm: React.FC = () => {
             <div className="form-group">
                 <div className="input-group">
                     <label>비밀번호 <span className="starcolor">*</span></label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={form.password}
-                        onChange={handleChange}
-                        onFocus={() => handleFocus('password')}
-                        className={validation.passwordLength && validation.passwordComplexity ? 'valid' : ''}
-                        placeholder="비밀번호를 입력해주세요."
-                    />
+                    <div className="input-container">
+                        <input
+                            type="password"
+                            name="password"
+                            value={form.password}
+                            onChange={handleChange}
+                            onFocus={() => handleFocus('password')}
+                            className={validation.passwordLength && validation.passwordComplexity ? 'valid' : ''}
+                            placeholder="비밀번호를 입력해주세요."
+                        />
+                        <img
+                            className="clear-icon-us"
+                            src="src\icons\x-circle.png"
+                            onClick={() => setForm({ ...form, password: '' })}
+                        >
+                        </img>
+                    </div>
                 </div>
                 <small
                     className={
@@ -252,22 +269,30 @@ const SignupForm: React.FC = () => {
                 >
                     {messages.passwordLength}
                 </small>
-
             </div>
 
             <div className="form-group">
                 <div className="input-group">
                     <label>비밀번호 확인 <span className="starcolor">*</span></label>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        value={form.confirmPassword}
-                        onChange={handleChange}
-                        onFocus={() => handleFocus('confirmPassword')}
-                        className={validation.confirmPassword ? 'valid' : ''}
-                        placeholder="비밀번호를 한 번 더 입력해주세요."
-                    />
+                        <div className="input-container">
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            value={form.confirmPassword}
+                            onChange={handleChange}
+                            onFocus={() => handleFocus('confirmPassword')}
+                            className={validation.confirmPassword ? 'valid' : ''}
+                            placeholder="비밀번호를 한 번 더 입력해주세요."
+                        />
+                        <img
+                            className="clear-icon-us"
+                            src="src\icons\x-circle.png"
+                            onClick={() => setForm({ ...form, confirmPassword: '' })}
+                        >
+                        </img>
+                    </div>
                 </div>
+
                 <small
                     className={
                         form.confirmPassword === ''
@@ -284,16 +309,25 @@ const SignupForm: React.FC = () => {
             <div className="form-group">
                 <div className="input-group">
                     <label>닉네임 </label>
-                    <input
-                        type="text"
-                        name="nickname"
-                        value={form.nickname}
-                        onChange={handleChange}
-                        onFocus={() => handleFocus('nickname')}
-                        className={validation.nickname ? 'valid' : ''}
-                        placeholder="닉네임을 입력해주세요."
-                    />
+                    <div className="input-container">
+                        <input
+                            type="text"
+                            name="nickname"
+                            value={form.nickname}
+                            onChange={handleChange}
+                            onFocus={() => handleFocus('nickname')}
+                            className={validation.nickname ? 'valid' : ''}
+                            placeholder="닉네임을 입력해주세요."
+                        />
+                        <img
+                            className="clear-icon-us"
+                            src="src\icons\x-circle.png"
+                            onClick={() => setForm({ ...form, nickname: '' })}
+                        >
+                        </img>
+                    </div>
                 </div>
+
                 <small
                     className={
                         form.nickname === ''

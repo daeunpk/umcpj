@@ -71,6 +71,7 @@ label {
 .input-container {
     position: relative;
     flex: 1; /* input을 넓게 만들기 위해 flex 사용 */
+    cursor: text;
 }
 
 input {
@@ -93,23 +94,43 @@ input:focus {
     outline:none;
 }
 
-.check-icon,
-.error-icon {
-    position: absolute; /* 부모 요소를 기준으로 절대 위치 */
-    right: 20px; /* 입력 필드 오른쪽 끝에서 10px 떨어진 위치 */
-    top: 50%; /* 수직 가운데 정렬 */
+.clear-icon {
+    position: absolute;
+    width:1.2rem;
+    height: 1.2rem;
+    right: 20px;
+    top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* 클릭 불가 처리 */
+    cursor: pointer;
+    opacity: 0;
 }
 
+.clear-icon-us{
+    position: absolute;
+    width:1.2rem;
+    height: 1.2rem;
+    right: 132px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0;
+}
+
+.input-container:focus-within .clear-icon, .input-container:focus-within .clear-icon-us {
+    opacity: 100;
+}
+
+.input-container.focused .clear-icon, .input-container.focused .clear-icon-us {
+    opacity: 100;
+}
 
 .check-icon {
-    width: 1.3rem;
-    height: 1.3rem;
-}
-
-.error-icon {
-    color: #f44336;
+    position: absolute;
+    width:1.2rem;
+    height: 1.2rem;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 button {
@@ -130,6 +151,7 @@ small {
 
 small.error-text {
     color: #fda4c7;
+    font-size: 12px;
 }
 
 small.valid-text {
@@ -162,7 +184,6 @@ small.default-text {
     font-size: 14px;
 }
 
-/* 중복확인 버튼 비활성화 */
 .signup-form button[type='button'] {
     background-color: rgb(91, 91, 91);
     color: white;
