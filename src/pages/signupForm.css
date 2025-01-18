@@ -116,11 +116,26 @@ input:focus {
     opacity: 0;
 }
 
-.input-container:focus-within .clear-icon, .input-container:focus-within .clear-icon-us {
+.toggle-password-icon{
+    position: absolute;
+    width:1.2rem;
+    height: 1.2rem;
+    right: 160px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0;
+}
+
+.input-container:focus-within .clear-icon, 
+.input-container:focus-within .clear-icon-us, 
+.input-container:focus-within .toggle-password-icon{
     opacity: 100;
 }
 
-.input-container.focused .clear-icon, .input-container.focused .clear-icon-us {
+.input-container.focused .clear-icon, 
+.input-container.focused .clear-icon-us, 
+.input-container:focused .toggle-password-icon{
     opacity: 100;
 }
 
@@ -185,15 +200,13 @@ small.default-text {
 }
 
 .signup-form button[type='button'] {
-    /* background-color: rgb(91, 91, 91); */
+    background-color: rgb(91, 91, 91);
     color: white;
     padding: 10px 20px;
     border-radius: 7px;
     font-size: 14px;
 }
-.idbutton{
-    background-color: rgb(91, 91, 91);
-}
+
 .signup-form button[type='button']:disabled {
     background-color: rgb(39, 38, 38);
     cursor: not-allowed;
@@ -206,4 +219,11 @@ small.default-text {
 .contour{
     width:800px;
     border:2px solid white;
+}
+
+/* 기본 브라우저 제공 아이콘 숨기기 */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-webkit-clear-button,
+input[type="password"]::-webkit-textfield-decoration-container {
+    display: none;
 }

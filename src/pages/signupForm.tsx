@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import TermsAgreement from './TermsAgreement.tsx'; // 약관 동의 컴포넌트를 불러
 import './signupForm.css';
 
 const SignupForm: React.FC = () => {
@@ -29,7 +28,16 @@ const SignupForm: React.FC = () => {
     });
     const [isIdChecked, setIsIdChecked] = useState(false); // 아이디 중복 여부 검사 완료 상태
     const [isIdDuplicate, setIsIdDuplicate] = useState(false); // 중복 여부
-    const [isAllRequiredChecked, setIsAllRequiredChecked] = useState(false); // 약관 동의 상태
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const toggleShowPassword = () => {
+        setShowPassword((prev) => !prev);
+    };
+
+    const toggleShowConfirmPassword = () => {
+        setShowConfirmPassword((prev) => !prev);
+    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -199,7 +207,6 @@ const SignupForm: React.FC = () => {
                         type="button" 
                         onClick={handleIdCheck}
                         disabled={!isIdValid} // 유효하지 않으면 버튼 비활성화
-                        className="idbutton"
                     >
                         중복확인
                     </button>
@@ -233,13 +240,19 @@ const SignupForm: React.FC = () => {
                     <label>비밀번호 <span className="starcolor">*</span></label>
                     <div className="input-container">
                         <input
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             name="password"
                             value={form.password}
                             onChange={handleChange}
-                            onFocus={() => handleFocus('password')}
+                            // onFocus={() => handleFocus('password')}
                             className={validation.passwordLength && validation.passwordComplexity ? 'valid' : ''}
                             placeholder="비밀번호를 입력해주세요."
+                        />
+                        <img
+                            src={showPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'} // 아이콘 변경
+                            alt={showPassword ? '숨기기' : '보기'}
+                            className="toggle-password-icon"
+                            onClick={toggleShowPassword} // 토글 함수 연결
                         />
                         <img
                             className="clear-icon-us"
@@ -279,13 +292,19 @@ const SignupForm: React.FC = () => {
                     <label>비밀번호 확인 <span className="starcolor">*</span></label>
                         <div className="input-container">
                         <input
-                            type="password"
+                            type={showConfirmPassword ? 'text' : 'password'}
                             name="confirmPassword"
                             value={form.confirmPassword}
                             onChange={handleChange}
                             onFocus={() => handleFocus('confirmPassword')}
                             className={validation.confirmPassword ? 'valid' : ''}
                             placeholder="비밀번호를 한 번 더 입력해주세요."
+                        />
+                        <img
+                            src={showConfirmPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'} // 아이콘 변경
+                            alt={showConfirmPassword ? '숨기기' : '보기'}
+                            className="toggle-password-icon"
+                            onClick={toggleShowConfirmPassword} // 토글 함수 연결
                         />
                         <img
                             className="clear-icon-us"
@@ -345,10 +364,7 @@ const SignupForm: React.FC = () => {
             </div>
 
             <hr className="contour"></hr>
-            <TermsAgreement onChange={setIsAllRequiredChecked} />
-            <button>뒤로가기</button>
             <button type="submit" className="submit-button">가입하기</button>
-            
         </form>
     );
 };
