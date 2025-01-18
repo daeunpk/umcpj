@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TermsAgreement from './TermsAgreement.tsx'; // 약관 동의 컴포넌트를 불러
 import './signupForm.css';
 
 const SignupForm: React.FC = () => {
@@ -28,6 +29,7 @@ const SignupForm: React.FC = () => {
     });
     const [isIdChecked, setIsIdChecked] = useState(false); // 아이디 중복 여부 검사 완료 상태
     const [isIdDuplicate, setIsIdDuplicate] = useState(false); // 중복 여부
+    const [isAllRequiredChecked, setIsAllRequiredChecked] = useState(false); // 약관 동의 상태
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -342,6 +344,7 @@ const SignupForm: React.FC = () => {
             </div>
 
             <hr className="contour"></hr>
+            <TermsAgreement onChange={setIsAllRequiredChecked} />
             <button type="submit" className="submit-button">가입하기</button>
         </form>
     );
