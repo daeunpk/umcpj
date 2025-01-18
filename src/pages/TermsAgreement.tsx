@@ -99,7 +99,9 @@ const TermsAgreement: React.FC<TermsAgreementProps> = ({ onChange }) => {
           <button
             type="button"
             className="view-terms-button"
-            onClick={() => handlePopup(item.label,item.content)}
+            onClick={() => handlePopup(item.label,item.content)
+            
+            }
           >
             약관보기
           </button>

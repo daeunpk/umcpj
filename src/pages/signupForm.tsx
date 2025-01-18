@@ -199,6 +199,7 @@ const SignupForm: React.FC = () => {
                         type="button" 
                         onClick={handleIdCheck}
                         disabled={!isIdValid} // 유효하지 않으면 버튼 비활성화
+                        className="idbutton"
                     >
                         중복확인
                     </button>
@@ -345,7 +346,9 @@ const SignupForm: React.FC = () => {
 
             <hr className="contour"></hr>
             <TermsAgreement onChange={setIsAllRequiredChecked} />
+            <button>뒤로가기</button>
             <button type="submit" className="submit-button">가입하기</button>
+            
         </form>
     );
 };
