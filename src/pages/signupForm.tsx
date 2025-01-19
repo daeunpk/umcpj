@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './signupForm.css';
+import TermsAgreement from './TermsAgreement';
 
 const SignupForm: React.FC = () => {
     const [form, setForm] = useState({
@@ -30,6 +31,8 @@ const SignupForm: React.FC = () => {
     const [isIdDuplicate, setIsIdDuplicate] = useState(false); // 중복 여부
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [isAllRequiredChecked, setIsAllRequiredChecked] = useState(false); // 약관 동의 상태
+    const [hasInteracted, setHasInteracted] = useState(false);
 
     const toggleShowPassword = () => {
         setShowPassword((prev) => !prev);
@@ -207,6 +210,7 @@ const SignupForm: React.FC = () => {
                         type="button" 
                         onClick={handleIdCheck}
                         disabled={!isIdValid} // 유효하지 않으면 버튼 비활성화
+                        className="idbutton"
                     >
                         중복확인
                     </button>
@@ -364,6 +368,15 @@ const SignupForm: React.FC = () => {
             </div>
 
             <hr className="contour"></hr>
+            <TermsAgreement
+                onChange={(isAllRequiredChecked, hasInteracted) => {
+                    setIsAllRequiredChecked(isAllRequiredChecked);
+                    setHasInteracted(hasInteracted);
+                }}
+            />
+            {!isAllRequiredChecked && hasInteracted && (
+                <div className="error-message">필수 항목 체크를 다시 확인해주세요.</div>
+             )}
             <button type="submit" className="submit-button">가입하기</button>
         </form>
     );

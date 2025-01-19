@@ -4,7 +4,7 @@ import { termsContent } from '../data/termsContent';
 import './termsAgreement.css'; // 별도 CSS 파일
 
 interface TermsAgreementProps {
-  onChange: (isAllRequiredChecked: boolean) => void;
+  onChange: (isAllRequiredChecked: boolean, hasInteracted: boolean) => void;
 }
 
 const TermsAgreement: React.FC<TermsAgreementProps> = ({ onChange }) => {
@@ -16,6 +16,7 @@ const TermsAgreement: React.FC<TermsAgreementProps> = ({ onChange }) => {
     adult: false,
   });
 
+  const [hasInteracted, setHasInteracted] = useState(false); // 사용자가 체크박스와 상호작용했는지 여부
   const [showPopup, setShowPopup] = useState(false);
   const [popupContent, setPopupContent] = useState('');
   const [popupTitle, setPopupTitle] = useState('');
@@ -25,7 +26,8 @@ const TermsAgreement: React.FC<TermsAgreementProps> = ({ onChange }) => {
       const updated = { ...prev, [name]: !prev[name] };
       updated.allChecked =
         updated.terms && updated.privacy && updated.adult && updated.optional;
-      onChange(updated.terms && updated.privacy && updated.adult);
+      setHasInteracted(true); //체크박스 변경 시 상호작용 상태로 설정  
+      onChange(updated.terms && updated.privacy && updated.adult, true);
       return updated;
     });
   };
@@ -39,7 +41,8 @@ const TermsAgreement: React.FC<TermsAgreementProps> = ({ onChange }) => {
       optional: allChecked,
       adult: allChecked,
     });
-    onChange(allChecked);
+    setHasInteracted(true);
+    onChange(allChecked, true);
   };
 
   const handlePopup = (title: string, content: string) => {

@@ -200,12 +200,16 @@ small.default-text {
 }
 
 .signup-form button[type='button'] {
-    background-color: rgb(91, 91, 91);
+    
     color: white;
     padding: 10px 20px;
     border-radius: 7px;
     font-size: 14px;
 }
+.idbutton{
+    background-color: rgb(91, 91, 91);
+}
+/* 이렇게 분리 안하면 타입이 버튼인 약관보기버튼색이 영향을 받아서 분리합니다. */
 
 .signup-form button[type='button']:disabled {
     background-color: rgb(39, 38, 38);
@@ -226,4 +230,11 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-webkit-clear-button,
 input[type="password"]::-webkit-textfield-decoration-container {
     display: none;
+}
+
+.error-message{
+    display: flex;
+    justify-content: center;
+    padding: 65px 0px 14px 0px;
+    color: var(--primary-rose-300, #FDA4C7);
 }
