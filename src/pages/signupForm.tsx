@@ -249,10 +249,10 @@ const SignupForm: React.FC = () => {
                             placeholder="비밀번호를 입력해주세요."
                         />
                         <img
-                            src={showPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'} // 아이콘 변경
+                            src={showPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'}
                             alt={showPassword ? '숨기기' : '보기'}
                             className="toggle-password-icon"
-                            onClick={toggleShowPassword} // 토글 함수 연결
+                            onClick={toggleShowPassword}
                         />
                         <img
                             className="clear-icon-us"
@@ -301,10 +301,10 @@ const SignupForm: React.FC = () => {
                             placeholder="비밀번호를 한 번 더 입력해주세요."
                         />
                         <img
-                            src={showConfirmPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'} // 아이콘 변경
+                            src={showConfirmPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'}
                             alt={showConfirmPassword ? '숨기기' : '보기'}
                             className="toggle-password-icon"
-                            onClick={toggleShowConfirmPassword} // 토글 함수 연결
+                            onClick={toggleShowConfirmPassword}
                         />
                         <img
                             className="clear-icon-us"
