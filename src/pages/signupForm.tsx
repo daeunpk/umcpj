@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './signupForm.css';
 import TermsAgreement from './TermsAgreement';
 
@@ -34,12 +34,19 @@ const SignupForm: React.FC = () => {
     const [isAllRequiredChecked, setIsAllRequiredChecked] = useState(false); // 약관 동의 상태
     const [hasInteracted, setHasInteracted] = useState(false);
 
+    const idInputRef = useRef<HTMLInputElement>(null);
+    const passwordInputRef = useRef<HTMLInputElement>(null);
+    const confirmPasswordInputRef = useRef<HTMLInputElement>(null);
+    const nicknameInputRef = useRef<HTMLInputElement>(null);
+
     const toggleShowPassword = () => {
         setShowPassword((prev) => !prev);
+        passwordInputRef.current?.focus();
     };
 
     const toggleShowConfirmPassword = () => {
         setShowConfirmPassword((prev) => !prev);
+        confirmPasswordInputRef.current?.focus();
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -191,6 +198,7 @@ const SignupForm: React.FC = () => {
                             value={form.id}
                             onChange={handleChange}
                             onFocus={() => handleFocus('id')}
+                            ref={idInputRef}
                             className={validation.idLength && !isIdDuplicate ? 'valid' : ''}
                             placeholder="아이디를 입력해주세요."
                         />
@@ -201,8 +209,9 @@ const SignupForm: React.FC = () => {
                             className="clear-icon"
                             src="src\icons\x-circle.png"
                             onClick={() => {
-                                setForm({ ...form, id: '' })}
-                            }
+                                setForm({ ...form, id: '' });
+                                idInputRef.current?.focus();
+                            }}
                         >
                         </img>
                     </div>
@@ -249,19 +258,23 @@ const SignupForm: React.FC = () => {
                             value={form.password}
                             onChange={handleChange}
                             // onFocus={() => handleFocus('password')}
+                            ref={passwordInputRef}
                             className={validation.passwordLength && validation.passwordComplexity ? 'valid' : ''}
                             placeholder="비밀번호를 입력해주세요."
                         />
                         <img
-                            src={showPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'}
-                            alt={showPassword ? '숨기기' : '보기'}
+                            src={showPassword ? 'src/icons/eye.png' : 'src/icons/eye-off.png'}
+                            alt={showPassword ? '보기' : '숨기기'}
                             className="toggle-password-icon"
                             onClick={toggleShowPassword}
                         />
                         <img
                             className="clear-icon-us"
                             src="src\icons\x-circle.png"
-                            onClick={() => setForm({ ...form, password: '' })}
+                            onClick={() => {
+                                setForm({ ...form, password: '' });
+                                passwordInputRef.current?.focus(); // input에 다시 focus 설정
+                            }}
                         >
                         </img>
                     </div>
@@ -301,19 +314,23 @@ const SignupForm: React.FC = () => {
                             value={form.confirmPassword}
                             onChange={handleChange}
                             onFocus={() => handleFocus('confirmPassword')}
+                            ref={confirmPasswordInputRef}
                             className={validation.confirmPassword ? 'valid' : ''}
                             placeholder="비밀번호를 한 번 더 입력해주세요."
                         />
                         <img
-                            src={showConfirmPassword ? 'src/icons/eye-off.png' : 'src/icons/eye.png'}
-                            alt={showConfirmPassword ? '숨기기' : '보기'}
+                            src={showConfirmPassword ? 'src/icons/eye.png' : 'src/icons/eye-off.png'}
+                            alt={showConfirmPassword ? '보기' : '숨기기'}
                             className="toggle-password-icon"
                             onClick={toggleShowConfirmPassword}
                         />
                         <img
                             className="clear-icon-us"
                             src="src\icons\x-circle.png"
-                            onClick={() => setForm({ ...form, confirmPassword: '' })}
+                            onClick={() => {
+                                setForm({ ...form, confirmPassword: '' });
+                                confirmPasswordInputRef.current?.focus(); // input에 다시 focus 설정
+                            }}
                         >
                         </img>
                     </div>
@@ -342,13 +359,17 @@ const SignupForm: React.FC = () => {
                             value={form.nickname}
                             onChange={handleChange}
                             onFocus={() => handleFocus('nickname')}
+                            ref={nicknameInputRef}
                             className={validation.nickname ? 'valid' : ''}
                             placeholder="닉네임을 입력해주세요."
                         />
                         <img
                             className="clear-icon-us"
                             src="src\icons\x-circle.png"
-                            onClick={() => setForm({ ...form, nickname: '' })}
+                            onClick={() => {
+                                setForm({ ...form, nickname: '' });
+                                nicknameInputRef.current?.focus();
+                            }}
                         >
                         </img>
                     </div>
@@ -376,7 +397,7 @@ const SignupForm: React.FC = () => {
             />
             {!isAllRequiredChecked && hasInteracted && (
                 <div className="error-message">필수 항목 체크를 다시 확인해주세요.</div>
-             )}
+            )}
             <button className="back-button">뒤로가기</button>
             <button type="submit" className="submit-button">가입하기</button>
         </form>
