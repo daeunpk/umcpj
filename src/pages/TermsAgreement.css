@@ -51,7 +51,7 @@
     align-items: center;
     width: 100%; /* 전체 너비 차지 */
     max-width: 395px; 
-    margin-left: 144px; /* 왼쪽으로 이동 (조정 가능) */
+    margin-left: 143px; /* 왼쪽으로 이동 (조정 가능) */
     margin-bottom: 30px; /* 아래에 agreement-item과 40px 갭 추가 */
 }
 
