@@ -92,7 +92,7 @@
     margin-left: 5px;
     padding: 5px 10px;
     cursor: pointer;
-    background: var(--grayscale-gray800, #242525);
+    background: rgb(39, 38, 38);
   }
   
   

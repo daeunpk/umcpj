@@ -377,6 +377,7 @@ const SignupForm: React.FC = () => {
             {!isAllRequiredChecked && hasInteracted && (
                 <div className="error-message">필수 항목 체크를 다시 확인해주세요.</div>
              )}
+            <button className="back-button">뒤로가기</button>
             <button type="submit" className="submit-button">가입하기</button>
         </form>
     );

@@ -177,6 +177,15 @@ small.default-text {
     color: #a9a9a9;
 }
 
+.back-button {
+    padding: 10px 20px;
+    background-color: rgb(39, 38, 38);
+    color: #FFF;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
 .submit-button {
     padding: 10px 20px;
     background-color: white;
@@ -222,7 +231,7 @@ small.default-text {
 
 .contour{
     width:800px;
-    border:2px solid white;
+    border:1.5px solid white;
 }
 
 /* 기본 브라우저 제공 아이콘 숨기기 */
