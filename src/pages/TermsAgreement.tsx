@@ -24,27 +24,32 @@ const TermsAgreement: React.FC<TermsAgreementProps> = ({ onChange }) => {
   const handleIndividualCheck = (name: keyof typeof agreements) => {
     setAgreements((prev) => {
       const updated = { ...prev, [name]: !prev[name] };
-      updated.allChecked =
-        updated.terms && updated.privacy && updated.adult && updated.optional;
-      setHasInteracted(true); //체크박스 변경 시 상호작용 상태로 설정  
-      onChange(updated.terms && updated.privacy && updated.adult, true);
-      return updated;
+      const isAllRequiredChecked = updated.terms && updated.privacy && updated.adult;
+      // 상호작용 상태 업데이트 및 부모로 상태 전달
+      setHasInteracted(true);
+      onChange(isAllRequiredChecked, true);
+  
+      return { ...updated, allChecked: isAllRequiredChecked };
     });
   };
-
+  
   const handleAllCheck = () => {
     const allChecked = !agreements.allChecked;
-    setAgreements({
+    const updatedAgreements = {
       allChecked,
       terms: allChecked,
       privacy: allChecked,
       optional: allChecked,
       adult: allChecked,
-    });
+    };
+  
+    setAgreements(updatedAgreements);
     setHasInteracted(true);
-    onChange(allChecked, true);
+  
+    const isAllRequiredChecked = allChecked && updatedAgreements.terms && updatedAgreements.privacy && updatedAgreements.adult;
+    onChange(isAllRequiredChecked, true);
   };
-
+  
   const handlePopup = (title: string, content: string) => {
     const cleanedTitle = title.replace(/동의/g, '');
     setPopupContent(content);

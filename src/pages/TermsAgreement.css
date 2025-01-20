@@ -1,5 +1,6 @@
 .terms-agreement {
     margin-top: 20px;
+    margin-bottom: 64px;
     display: flex;
     flex-direction: column; /* 항목들을 수직으로 배치 */
     align-items: center; /* 중앙 정렬 */

@@ -13,6 +13,7 @@ const SignupForm: React.FC = () => {
         id: false,
         idLength: false,
         idDuplicate: false,
+        password: false,
         passwordLength: false,
         passwordComplexity: false,
         confirmPassword: false,
@@ -163,14 +164,28 @@ const SignupForm: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (Object.values(validation).every((v) => v) && !isIdDuplicate) {
+        const { id, password, ...relevantValidation } = validation;
+
+         console.log('필수 입력 필드 유효성 상태:', relevantValidation);
+         console.log('아이디 중복 여부:', isIdDuplicate);
+         console.log('필수 약관 동의 상태:', isAllRequiredChecked);
+
+        // const requiredValidation = { ...validation };
+        // delete requiredValidation.nickname; // 닉네임 유효성을 제외
+        
+        if (Object.values(relevantValidation).every((v) => v) && !isIdDuplicate && isAllRequiredChecked) {
             const storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
             const newUser = { id: form.id, nickname: form.nickname };
             localStorage.setItem('registeredUsers', JSON.stringify([...storedUsers, newUser]));
     
             alert('회원가입 성공!');
         } else {
+            // 유효성 검사 실패 시 메시지
+            if (!isAllRequiredChecked) {
+                alert('필수 약관을 모두 동의해주세요.');
+        } else {
             alert('입력한 정보를 확인해주세요.');
+        }
         }
     };
 
@@ -393,13 +408,17 @@ const SignupForm: React.FC = () => {
                 onChange={(isAllRequiredChecked, hasInteracted) => {
                     setIsAllRequiredChecked(isAllRequiredChecked);
                     setHasInteracted(hasInteracted);
+                    console.log('필수 약관 동의 상태:', isAllRequiredChecked);
+                    console.log('상호작용 상태:', hasInteracted);
                 }}
             />
             {!isAllRequiredChecked && hasInteracted && (
                 <div className="error-message">필수 항목 체크를 다시 확인해주세요.</div>
             )}
-            <button className="back-button">뒤로가기</button>
-            <button type="submit" className="submit-button">가입하기</button>
+            <div className="button-container">
+                <button className="back-button">뒤로가기</button>
+                <button type="submit" className="submit-button">가입하기</button>
+            </div>
         </form>
     );
 };

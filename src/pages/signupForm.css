@@ -244,6 +244,12 @@ input[type="password"]::-webkit-textfield-decoration-container {
 .error-message{
     display: flex;
     justify-content: center;
-    padding: 65px 0px 14px 0px;
+    padding: 14px 0px;
     color: var(--primary-rose-300, #FDA4C7);
+}
+.button-container{
+    display: flex;
+    padding: 14px;
+    justify-content: center;
+    gap: 33px;
 }
