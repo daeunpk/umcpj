@@ -25,11 +25,12 @@ const TermsAgreement: React.FC<TermsAgreementProps> = ({ onChange }) => {
     setAgreements((prev) => {
       const updated = { ...prev, [name]: !prev[name] };
       const isAllRequiredChecked = updated.terms && updated.privacy && updated.adult;
+      const isAllChecked = isAllRequiredChecked && updated.optional;
       // 상호작용 상태 업데이트 및 부모로 상태 전달
       setHasInteracted(true);
       onChange(isAllRequiredChecked, true);
   
-      return { ...updated, allChecked: isAllRequiredChecked };
+      return { ...updated, allChecked: isAllChecked };
     });
   };
   
