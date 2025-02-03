@@ -1,0 +1,106 @@
+body {
+    background-color: #121212;
+    font-family: "Pretendard", sans-serif;
+}
+
+button {
+    font-family: "Pretendard", sans-serif;
+    cursor: pointer;
+}
+
+.signup-next-banner {
+    width: 100%;
+    height: 257px;
+    padding-top: 50px;
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 4px 20px 0 #FFFFFF1A;
+    box-sizing: border-box;
+}
+
+.signup-next-imagebox {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-next-imagebox img {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.signup-next-imagebox h1 {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 47.73px;
+    letter-spacing: -1.6px;
+    margin-top: 19px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-next-mainform {
+    padding-top: 112px;
+}
+
+.signup-next-maincontainer {
+    display: flex;
+}
+
+.signup-next-maincontainer img {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+}
+
+.signup-next-text {
+    margin-top: 39px;
+    font-size: 16px;
+    line-height: 19.09px;
+    letter-spacing: -0.64px;
+    color: #F3F5F6;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-next-text div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#signup-next-text2 {
+    margin-top: 22px;
+}
+
+.signup-next-btn {
+    height: 51px;
+    margin-top: 60px;
+    margin-bottom: 317px;
+    display: flex;
+}
+
+.signup-next-btncontainer {
+    margin: 0 auto;
+}
+
+.signup-next-btncontainer button {
+    font-size: 16px;
+    line-height: 18.75px;
+    letter-spacing: -0.64px;
+    border: none;
+    border-radius: 40px;
+    border: 1px solid #00000033;
+    padding: 16px 30px;
+}
+
+.signup-next-backbtn {
+    width: 118px;
+    background-color: #313131;
+    color: #FFFFFF;
+    margin-right: 27.5px;
+}
+
+.signup-next-loginbtn {
+    width: 134px;
+    background-color: #FFFFFF;
+}
